@@ -80,19 +80,10 @@ public class Pedido {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Pedido Data: ");
-        sb.append(sdf.format(Data) + "\n");
-        sb.append("Pedido status: ");
-        sb.append(status + "\n");
-        sb.append("Cliente: ");
-        sb.append(cliente + "\n");
-        sb.append("Pedido items:\n");
-        for (ItemPedido item : items) {
-            sb.append(item + "\n");
-        }
-        sb.append("Total price: $");
-        sb.append(String.format("%.2f", total()));
-        return sb.toString();
+        return  "Numero: " + id + "\n" +
+                "Status: " + status + "\n" +
+                "Cliente: " + cliente + "\n" +
+                items + "\n" +
+                "Total Pedido: R$" + String.format("%.2f", total()) + "\n";
     }
 }

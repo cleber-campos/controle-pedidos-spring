@@ -3,7 +3,9 @@ package br.com.app.controlepedidos.model;
 import jakarta.persistence.*;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_clientes")
@@ -15,6 +17,9 @@ public class Cliente {
     private String nome;
     private String email;
     private Date DataNascimento;
+
+    @OneToMany(mappedBy = "cliente",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Pedido> pedidos = new ArrayList<>();
 
     @Transient
     private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -40,28 +45,19 @@ public class Cliente {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public Date getDataNascimento() {
         return DataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
-        DataNascimento = dataNascimento;
-    }
-
     @Override
     public String toString() {
-        return nome + " (" + sdf.format(getDataNascimento()) + ") - " + email;
+        return "Nome: " + nome +
+                " | Email: " + email +
+                " | Data Nasc: " + sdf.format(getDataNascimento());
     }
+
 }

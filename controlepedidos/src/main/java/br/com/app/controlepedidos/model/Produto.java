@@ -46,8 +46,8 @@ public class Produto {
 
     @Override
     public String toString() {
-        return  "id: " + id +
-                ", nome: '" + nome +
-                ", preco: " + preco;
+        return  "Cod Produto: " + id +
+                " | Descricao: " + nome +
+                " | Preco R$" + String.format("%.2f", preco) ;
     }
 }
